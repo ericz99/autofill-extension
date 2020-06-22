@@ -3,11 +3,13 @@ import {
   DELETED_PROFILE,
   UPDATED_PROFILE,
   SELECTED_PROFILE,
+  SET_ACTIVE_PROFILE,
 } from "../constants/types";
 
 const initialState = {
   profiles: [],
   selectedProfile: {},
+  activeProfile: {},
 };
 
 export default function (state = initialState, action) {
@@ -31,6 +33,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selectedProfile: action.payload,
+      };
+    case SET_ACTIVE_PROFILE:
+      return {
+        ...state,
+        activeProfile: action.payload,
       };
     default:
       return state;

@@ -6,3 +6,4 @@ export const UPDATE_CONFIG = "UPDATE_CONFIG";
 export const SET_LOADING = "SET_LOADING";
 export const GET_ERROR = "GET_ERROR";
 export const SELECTED_PROFILE = "SELECTED_PROFILE";
+export const SET_ACTIVE_PROFILE = "SET_ACTIVE_PROFILE";

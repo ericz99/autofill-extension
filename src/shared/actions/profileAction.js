@@ -3,6 +3,7 @@ import {
   DELETED_PROFILE,
   UPDATED_PROFILE,
   SELECTED_PROFILE,
+  SET_ACTIVE_PROFILE,
 } from "../constants/types";
 
 export const addProfile = (profileData) => (dispatch) => {
@@ -29,6 +30,13 @@ export const updateProfile = (profiles) => (dispatch) => {
 export const selectProfile = (profile) => (dispatch) => {
   dispatch({
     type: SELECTED_PROFILE,
+    payload: profile,
+  });
+};
+
+export const setActiveProfile = (profile) => (dispatch) => {
+  dispatch({
+    type: SET_ACTIVE_PROFILE,
     payload: profile,
   });
 };

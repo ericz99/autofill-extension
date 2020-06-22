@@ -22,14 +22,20 @@ export const SelectStyled = styled.select`
 
 export const Option = styled.option``;
 
-export default function Select({ name, options, defaultValue, ...props }) {
+export default function Select({
+  name,
+  options,
+  defaultValue,
+  value,
+  ...props
+}) {
   return (
-    <SelectStyled name={name} defaultValue={defaultValue} {...props}>
-      <Option disabled value={defaultValue}>
-        {defaultValue}
-      </Option>
+    <SelectStyled name={name} {...props}>
+      <Option disabled>{defaultValue}</Option>
       {options.map((option, idx) => (
-        <Option key={idx}>{option.profileName}</Option>
+        <Option key={idx} selected={value === option.profileName && value}>
+          {option.profileName}
+        </Option>
       ))}
     </SelectStyled>
   );

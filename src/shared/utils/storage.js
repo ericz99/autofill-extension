@@ -22,10 +22,11 @@ export const saveSettings = (settings) => {
 
 // Sets the current profile to be used for autofilling to Chrome's local storage
 export const setCurrentProfile = (profile) => {
-  chrome.storage.local.set({ selectedProfile: profile });
+  localStorage.setItem("activeProfile", JSON.stringify(profile));
+  chrome.storage.local.set({ activeProfile: profile });
 };
 
 // # get current profile
 export const getCurrentProfile = () => {
-  return chrome.storage.local.get(["selectedProfile"]);
+  return JSON.parse(localStorage.getItem("activeProfile"));
 };

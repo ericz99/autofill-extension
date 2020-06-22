@@ -10,5 +10,16 @@
   "permissions": ["storage"],
   "background": {
     "scripts": ["background.js"]
-  }
+  },
+  "content_scripts" : [
+    {
+      "matches": ["https://*/*/checkouts/*"],
+      "js": ["sites/shopify.js"]
+    },
+    {
+      "matches": ["https://*.shopifycs.com/*"],
+      "js": ["sites/shopify-cs.js"],
+      "all_frames": true
+    }
+  ]
 }

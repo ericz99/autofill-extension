@@ -6,44 +6,13 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const SiteWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  margin-bottom: 25px;
+export const Header = styled.h5`
+  font-weight: 500;
+  margin-bottom: 10px;
 `;
 
-export const SiteHeader = styled.div`
-  display: flex;
+export const ActiveProfileSelector = styled.div`
+  display: block;
   position: relative;
-  align-items: center;
-  padding: 0 65px;
-
-  &:before {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    height: 2px;
-    width: 15%;
-    background: #ffffff;
-  }
-
-  &:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    right: 0;
-    height: 2px;
-    width: 50%;
-    background: #ffffff;
-  }
-`;
-
-export const SiteRadio = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  margin-top: 15px;
-  font-size: 13px;
+  margin-bottom: 15px;
 `;
