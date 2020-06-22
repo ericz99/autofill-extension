@@ -17,3 +17,20 @@ export const testProfile = {
   cvv: "123",
   country: "United States",
 };
+
+// # DEFAULT CONFIG
+export const defaultConfig = {
+  shopify: {
+    navigateSteps: true,
+    processPayment: false,
+    skipShipping: false,
+  },
+  supreme: {
+    checkTerms: false,
+    processPayment: false,
+  },
+  stripe: {
+    comprehensiveFill: false,
+    processPayment: false,
+  },
+};

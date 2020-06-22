@@ -15,7 +15,7 @@ export default function ProfileSelector() {
 
     // # FETCH THE PROFILE
     profiles.forEach((profile) => {
-      if (profile.profileName === value) {
+      if (profile.profileName.trim() === value.trim()) {
         // # SELECT AS PROFILE
         dispatch(selectProfile(profile));
       }

@@ -1,21 +1,57 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
-import { addProfile } from "../../../shared/actions/profileAction";
+import {
+  addProfile,
+  updateProfile,
+} from "../../../shared/actions/profileAction";
+
+import { getProfiles, saveProfiles } from "../../../shared/utils/storage";
 import Input from "../../../shared/components/Input";
 import Button from "../../../shared/components/Button";
 
 import { Form, FormControl, Row, SplitControl } from "../Styles";
 
 export default function ProfileForm({ selectedProfile }) {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
+    // # PROFILE IS SELECTED AND SHOULD BE UPDATED
+    if (Object.keys(selectedProfile).length > 0) {
+      let profiles = getProfiles();
+      const idx = profiles.findIndex(
+        (p) => p.profileName === selectedProfile.profileName
+      );
+      if (idx > -1) {
+        profiles[idx] = data;
+        // # UPDATE OUT LOCALSTORAGE
+        saveProfiles(profiles);
+        // # UPDATE OUR REDUX STATE
+        dispatch(updateProfile(profiles));
+      }
+
+      return;
+    }
+
     // # DISPATCH ACTION
     dispatch(addProfile(data));
+    // # SAVE TO LOCALSTORAGE
+    saveProfiles([...getProfiles(), data]);
   };
+
+  useEffect(() => {
+    let fields = [];
+    if (Object.keys(selectedProfile).length > 0) {
+      for (let [key, value] of Object.entries(selectedProfile)) {
+        fields.push({ [key]: value });
+      }
+
+      // # SET VALUES
+      setValue(fields);
+    }
+  }, [selectedProfile, setValue]);
 
   return (
     <>
