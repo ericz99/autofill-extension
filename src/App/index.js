@@ -10,6 +10,7 @@ import {
   getSettings,
   saveSettings,
   getCurrentProfile,
+  setCurrentProfile,
 } from "../shared/utils/storage";
 import { testProfile, defaultConfig } from "../shared/constants/any";
 import Tabs from "../shared/components/Tabs";
@@ -31,10 +32,21 @@ export default function App() {
 
     if (profiles) {
       const activeProfile = getCurrentProfile();
+
+      if (activeProfile) {
+        // # ADD ACTIVE PROFILE TO REDUX
+        dispatch(setActiveProfile(activeProfile));
+        // # SET ACTIVE PROFILE IT NOT ACTIVE
+        setCurrentProfile(activeProfile);
+      } else {
+        // # ADD DEFAULT PROFILE
+        dispatch(setActiveProfile(profiles[0]));
+        // # SET ACTIVE PROFILE IT NOT ACTIVE
+        setCurrentProfile(testProfile);
+      }
+
       // # ADD ALL PROFILES
       profiles.forEach((profile) => dispatch(addProfile(profile)));
-      // # ADD ACTIVE PROFILE TO REDUX
-      dispatch(setActiveProfile(activeProfile));
     } else {
       profiles = [testProfile];
       settings = defaultConfig;
@@ -42,6 +54,8 @@ export default function App() {
       dispatch(addProfile({ ...testProfile }));
       // # ADD DEFAULT PROFILE
       dispatch(setActiveProfile(profiles[0]));
+      // # SET ACTIVE PROFILE IT NOT ACTIVE
+      setCurrentProfile(testProfile);
     }
 
     // # SAVE REDUX STATE CONFIG
