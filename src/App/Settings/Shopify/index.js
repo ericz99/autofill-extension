@@ -40,6 +40,15 @@ export default function Shopify({ handleChange, settings }) {
             type="checkbox"
           />
         </SiteRadio>
+        <SiteRadio>
+          Skip To Checkout
+          <Radio
+            onChange={() => handleOptionUpdate("skipToCheckout")}
+            name="skipToCheckout"
+            defaultCheck={settings["shopify"]["skipToCheckout"]}
+            type="checkbox"
+          />
+        </SiteRadio>
       </SiteWrapper>
     </>
   );

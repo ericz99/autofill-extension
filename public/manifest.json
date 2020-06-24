@@ -7,7 +7,7 @@
     "default_popup": "index.html",
     "default_title": "AIO Extension"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs", "cookies", "https://*/*", "http://*/*"],
   "background": {
     "scripts": ["background.js"]
   },

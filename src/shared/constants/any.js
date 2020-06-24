@@ -24,6 +24,7 @@ export const defaultConfig = {
     navigateSteps: true,
     processPayment: false,
     skipShipping: false,
+    skipToCheckout: false,
   },
   supreme: {
     checkTerms: false,
