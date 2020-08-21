@@ -11,9 +11,20 @@ chrome.storage.local.get(["activeProfile"], (result) => {
 chrome.storage.local.get(["settings"], (result) => {
   currentConfig = result.settings;
 
-  // # we aren't in checkout phase
-  if (!document.URL.includes("&step=payment_method")) {
+  // # if user still in information tab
+  if (currentStep() !== "payment_method") {
     _init(currentConfig);
+  }
+});
+
+chrome.extension.onMessage.addListener((request, sender, sendResponse) => {
+  switch (request.cmd) {
+    case "processCheckout":
+      return finalizeCheckoutProcess();
+    case "retryCheckout":
+      return processCheckout();
+    default:
+      break;
   }
 });
 
@@ -81,11 +92,17 @@ function fillInfo(id, value, byName = false) {
 
 // # NAVIGATE NEXT BUTTON
 const navigateSteps = () => {
-  const conButton = document.querySelector(".step__footer__continue-btn");
+  let conButton = document.querySelector(".step__footer__continue-btn");
   // # only click if recaptcha don't exist
   if (!checkForRecaptcha()) {
     conButton.click();
   }
+};
+
+// # get current step
+const currentStep = () => {
+  let element = document.querySelector("[data-step]");
+  return element.dataset.step;
 };
 
 // # SKIP TO CHECKOUT FUNCTION
@@ -97,4 +114,23 @@ const skipToCheckout = (profile, url, authenticityToken) => {
     url,
     authenticityToken,
   });
+};
+
+// # ALLOW RETRY TODO: do this later
+const allowRetry = () => {
+  if (currentConfig.shopify.retryAllow) {
+    chrome.runtime.sendMessage({ cmd: "retryCheckout" });
+  } else {
+    chrome.runtime.sendMessage({ cmd: "done" });
+  }
+};
+
+// # finalize the checkout process
+const finalizeCheckoutProcess = () => {
+  console.log("attempt to checkout");
+
+  let attemptedCheckout = setTimeout(() => {
+    navigateSteps();
+    clearTimeout(attemptedCheckout);
+  }, 1000);
 };

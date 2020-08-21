@@ -20,6 +20,17 @@
       "matches": ["https://*.shopifycs.com/*"],
       "js": ["sites/shopify-cs.js"],
       "all_frames": true
+    },
+    {
+      "run_at": "document_end",
+			"matches": ["https://checkout.stripe.com/*", "https://*.stripe.com/*"],
+			"js": ["sites/stripe.js"],
+			"all_frames": true
+    },
+    {
+      "matches": ["https://www.supremenewyork.com/checkout"],
+      "js": ["sites/supreme.js"],
+      "all_frames": true
     }
   ]
 }

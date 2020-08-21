@@ -31,7 +31,9 @@ export default function Select({
 }) {
   return (
     <SelectStyled name={name} {...props}>
-      <Option disabled>{defaultValue}</Option>
+      <Option disabled selected>
+        {defaultValue}
+      </Option>
       {options.map((option, idx) => (
         <Option key={idx} selected={value === option.profileName && value}>
           {option.profileName}

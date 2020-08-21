@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Icon, { IconStyle } from "../Icon";
+import Icon from "../Icon";
 
 export const ButtonStyled = styled.button`
   padding: 12px 38px;
@@ -15,8 +15,15 @@ export const ButtonStyled = styled.button`
   position: relative;
   margin-right: 15px;
   width: 100%;
-  ${IconStyle} {
-    margin-left: 10px;
+
+  &:nth-child(1) {
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  &:nth-child(2) {
+    margin: 0;
+    display: inline-block;
   }
 `;
 

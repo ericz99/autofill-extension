@@ -7,15 +7,29 @@ import {
   updateProfile,
 } from "../../../shared/actions/profileAction";
 
-import { getProfiles, saveProfiles } from "../../../shared/utils/storage";
+import {
+  getProfiles,
+  saveProfiles,
+  getCurrentProfile,
+  setCurrentProfile,
+} from "../../../shared/utils/storage";
+
 import Input from "../../../shared/components/Input";
 import Button from "../../../shared/components/Button";
 
 import { Form, FormControl, Row, SplitControl } from "../Styles";
 
 export default function ProfileForm({ selectedProfile }) {
+  const activeProfile = getCurrentProfile();
   const { control, handleSubmit, setValue } = useForm();
   const dispatch = useDispatch();
+
+  const updateActiveProfile = (selectedProfile) => {
+    if (selectedProfile.profileName === activeProfile.profileName) {
+      // # update it
+      setCurrentProfile(selectedProfile);
+    }
+  };
 
   const onSubmit = (data) => {
     // # PROFILE IS SELECTED AND SHOULD BE UPDATED
@@ -26,6 +40,8 @@ export default function ProfileForm({ selectedProfile }) {
       );
       if (idx > -1) {
         profiles[idx] = data;
+        // # update active profile
+        updateActiveProfile(profiles[idx]);
         // # UPDATE OUT LOCALSTORAGE
         saveProfiles(profiles);
         // # UPDATE OUR REDUX STATE

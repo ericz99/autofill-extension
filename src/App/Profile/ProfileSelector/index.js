@@ -32,6 +32,7 @@ export default function ProfileSelector() {
             options={profiles}
             onChange={handleProfileSelect}
             defaultValue="Choose an profile"
+            label="profileName"
           />
         </FormControl>
       </Row>

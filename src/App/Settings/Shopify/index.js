@@ -32,15 +32,6 @@ export default function Shopify({ handleChange, settings }) {
           />
         </SiteRadio>
         <SiteRadio>
-          Skip Shipping
-          <Radio
-            onChange={() => handleOptionUpdate("skipShipping")}
-            name="skipShipping"
-            defaultCheck={settings["shopify"]["skipShipping"]}
-            type="checkbox"
-          />
-        </SiteRadio>
-        <SiteRadio>
           Skip To Checkout
           <Radio
             onChange={() => handleOptionUpdate("skipToCheckout")}

@@ -152,11 +152,25 @@ function skipToCheckoutFunc(request) {
   startCheckout(url, profile, authenticityToken);
 }
 
+function processCheckoutFlow() {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { cmd: "processCheckout" });
+  });
+}
+
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   switch (request.cmd) {
     case "skipToCheckout":
       return skipToCheckoutFunc(request);
+    case "processCheckout":
+      return processCheckoutFlow();
+    case "retryCheckout":
+      return processCheckoutFlow();
+    case "done":
+      return;
     default:
       break;
   }
 });
+
+// #TODO: only retry to submit payment if user set retry. delay retry will be 500ms by default

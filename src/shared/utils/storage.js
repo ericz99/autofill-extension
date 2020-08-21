@@ -20,7 +20,7 @@ export const saveSettings = (settings) => {
   chrome.storage.local.set({ settings: settings });
 };
 
-// Sets the current profile to be used for autofilling to Chrome's local storage
+// # set current profile
 export const setCurrentProfile = (profile) => {
   localStorage.setItem("activeProfile", JSON.stringify(profile));
   chrome.storage.local.set({ activeProfile: profile });
@@ -29,4 +29,15 @@ export const setCurrentProfile = (profile) => {
 // # get current profile
 export const getCurrentProfile = () => {
   return JSON.parse(localStorage.getItem("activeProfile"));
+};
+
+// # set manaual site
+export const setManualSite = (sites) => {
+  localStorage.setItem("manualSites", JSON.stringify(sites));
+  chrome.storage.local.set({ manualSites: sites });
+};
+
+// # get current profile
+export const getManualSite = () => {
+  return JSON.parse(localStorage.getItem("manualSites"));
 };

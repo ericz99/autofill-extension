@@ -23,7 +23,6 @@ export const defaultConfig = {
   shopify: {
     navigateSteps: true,
     processPayment: false,
-    skipShipping: false,
     skipToCheckout: false,
   },
   supreme: {
@@ -31,7 +30,7 @@ export const defaultConfig = {
     processPayment: false,
   },
   stripe: {
-    comprehensiveFill: false,
+    autofill: false,
     processPayment: false,
   },
 };

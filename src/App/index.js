@@ -17,11 +17,13 @@ import Tabs from "../shared/components/Tabs";
 
 import ProfileTab from "./Profile";
 import SettingsTab from "./Settings";
-import ACOTab from "./ACO";
+import ManualTab from "./Manual";
 
 import NormalizeStyles from "./NormalizeStyles";
 import BaseStyles from "./BaseStyles";
 import { Wrapper, Tab } from "./Styles";
+
+// TODO: after editing the profile, active profile didnt update
 
 export default function App() {
   const dispatch = useDispatch();
@@ -78,8 +80,8 @@ export default function App() {
           <Tab label="Settings">
             <SettingsTab />
           </Tab>
-          <Tab label="ACO">
-            <ACOTab />
+          <Tab label="Manual">
+            <ManualTab />
           </Tab>
         </Tabs>
       </Wrapper>
