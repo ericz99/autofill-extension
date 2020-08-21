@@ -23,11 +23,11 @@ Easy to use chrome extension, follow the installation below to get started!
 
 ## Pictures 
 
-[!picture1](https://i.imgur.com/BQsUu24.png)
+![picture1](https://i.imgur.com/BQsUu24.png)
 
-[!picture2](https://i.gyazo.com/b7ab36e04e6015624c513b2474ed3ffc.png)
+![picture2](https://i.gyazo.com/b7ab36e04e6015624c513b2474ed3ffc.png)
 
-[!picture3](https://i.gyazo.com/95235c0d5259706eec4ee1b651bf9dbd.png)
+![picture3](https://i.gyazo.com/95235c0d5259706eec4ee1b651bf9dbd.png)
 
 ## App Info
 
